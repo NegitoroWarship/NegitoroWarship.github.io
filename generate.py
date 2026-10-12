@@ -31,13 +31,13 @@ PATHS = [
 ROOT = Path(__file__).resolve().parent
 HOST = BASE.split("://", 1)[1]
 
+# No noindex here: it would contradict the canonical link to the new page.
 STUB = """<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>Moved to HOST</title>
-EXTRA<meta name="robots" content="noindex">
-<link rel="canonical" href="TARGET">
+EXTRA<link rel="canonical" href="TARGET">
 <meta http-equiv="refresh" content="0; url=TARGET">
 <script>location.replace("TARGET" + location.hash);</script>
 </head>
