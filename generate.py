@@ -17,6 +17,10 @@ BASE = "https://blog.negitorowarship.workers.dev"
 # Search Console's HTML-tag verification for the github.io property.
 VERIFICATION = "WHejNE_OkojkP_h6Bj6BjP4aja8C9JdY4BQeAtGu0wM"
 
+# Search Console's HTML-file verification for the same property. Keep it
+# after verification succeeds: removing it drops ownership.
+VERIFICATION_FILE = "googleccfef788482526c7.html"
+
 # Paths from the user-site era; each is also served under /blog/ for the
 # project-site era. Both redirect to the same path on BASE.
 PATHS = [
@@ -82,3 +86,4 @@ for path in PATHS:
 write("/404.html", NOT_FOUND.replace("HOST", HOST).replace("BASE", BASE))
 write("/robots.txt", "User-agent: *\nAllow: /\n")
 write("/.nojekyll", "")
+write("/" + VERIFICATION_FILE, f"google-site-verification: {VERIFICATION_FILE}\n")
