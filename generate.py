@@ -28,7 +28,8 @@ PATHS = [
     "/posts/building-a-63-key-asymmetric-dactyl-manuform/",
 ]
 
-ROOT = Path(__file__).resolve().parent
+# GitHub Pages publishes main's /docs, which keeps this script off the site.
+SITE = Path(__file__).resolve().parent / "docs"
 HOST = BASE.split("://", 1)[1]
 
 # No noindex here: it would contradict the canonical link to the new page.
@@ -59,7 +60,7 @@ NOT_FOUND = """<!doctype html>
 
 
 def write(path, content):
-    file = ROOT / path.lstrip("/")
+    file = SITE / path.lstrip("/")
     file.parent.mkdir(parents=True, exist_ok=True)
     file.write_text(content, encoding="utf-8")
 
